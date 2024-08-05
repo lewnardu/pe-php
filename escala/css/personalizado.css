@@ -1,0 +1,32 @@
+body {
+    margin: 0px 0px;
+    padding: 0px;
+
+    font-family: Arial, Helvetica Neue, Helvetica, sans-serif;
+    font-size: 14px;
+}
+
+#calendar {
+    max-width: 900px;
+  /*  margin-left: 200px; 
+    margin-top:30px;
+    
+    left: 50%;
+    margin-right: -50%;
+    transform: translate(-50%, -50%)
+    
+   max-width: 900px; */
+   position: absolute;
+  
+   left: 50%;
+   margin-left: -25%;
+   transform: translate(-50%, -50%)
+   margin-top:30px;
+      
+}
+.visevent{
+    display: block;
+}
+.formedit{
+    display: none;
+}
