@@ -1,0 +1,32 @@
+#calendar {
+  max-width: 100%;
+  margin: 0 auto;
+}
+
+#calendar .fc-event-main {
+  font-weight: bold; /* Deixar o texto em negrito */
+  white-space: nowrap; /* Evitar quebra de linha */
+  overflow: hidden; /* Esconder o excesso de texto */
+  text-overflow: ellipsis; /* Adicionar reticências (...) se o texto for muito longo */
+}
+
+#calendar .fc-event {
+  max-width: 100%; /* Garante que o evento não exceda a largura do contêiner */
+  box-sizing: border-box; /* Inclui padding e bordas na largura total */
+}
+
+#calendar .fc-toolbar-title {
+  text-transform: capitalize; /* Faz com que a primeira letra de cada palavra seja maiúscula */
+}
+
+.fc-event .fas {
+  margin-right: 8px; /* Espaçamento entre o ícone e o título */    
+}
+
+.icon-sun {
+  color: #edf739de; /* Cor amarela para o sol */
+}
+
+.icon-moon {
+  color: #d7d7ed; /* Cor cinza escuro para a lua */
+}
