@@ -2,11 +2,11 @@
 <ul class="navbar-nav bg-gradient-dark sidebar sidebar-dark accordion" id="accordionSidebar">
 
     <!-- Sidebar - Brand -->
-    <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.php">
-        <div class="sidebar-brand-icon rotate-n-15">
-            <i class="fas fa-laugh-wink"></i>
+    <a class="sidebar-brand d-flex align-items-center justify-content-center bg-white" href="index.php">
+        <div class="sidebar-brand-icon">
+            <img class="rounded-circle" src="../../statics/img/logo-pp.png" alt="..." width='65' heigth='65'>
         </div>
-        <div class="sidebar-brand-text mx-3">SB Admin <sup>2</sup></div>
+        <div class="sidebar-brand-text mx-3 text-dark"><sup>Spex</sup>Plantão Extra</div>
     </a>
 
     <!-- Divider -->
@@ -15,20 +15,20 @@
     <!-- Nav Item - Dashboard -->
     <li class="nav-item active">
         <a class="nav-link" href="index.php">
-            <i class="fas fa-fw fa-tachometer-alt"></i>
-            <span>Dashboard</span></a>
+            <i class="fas fa-home"></i>
+            <span>Início</span></a>
     </li>
 
     <!-- Divider -->
-    <hr class="sidebar-divider">
+    <!-- <hr class="sidebar-divider"> -->
 
     <!-- Heading -->
-    <div class="sidebar-heading">
+    <!-- <div class="sidebar-heading">
         Interface
-    </div>
+    </div> -->
 
     <!-- Nav Item - Pages Collapse Menu -->
-    <li class="nav-item">
+    <!-- <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true"
             aria-controls="collapseTwo">
             <i class="fas fa-fw fa-cog"></i>
@@ -41,10 +41,10 @@
                 <a class="collapse-item" href="pages/cards.php">Cards</a>
             </div>
         </div>
-    </li>
+    </li> -->
 
     <!-- Nav Item - Utilities Collapse Menu -->
-    <li class="nav-item">
+    <!-- <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities"
             aria-expanded="true" aria-controls="collapseUtilities">
             <i class="fas fa-fw fa-wrench"></i>
@@ -59,18 +59,18 @@
                 <a class="collapse-item" href="pages/utilities-other.php">Other</a>
             </div>
         </div>
-    </li>
+    </li> -->
 
     <!-- Divider -->
-    <hr class="sidebar-divider">
+    <!-- <hr class="sidebar-divider"> -->
 
     <!-- Heading -->
-    <div class="sidebar-heading">
+    <!-- <div class="sidebar-heading">
         Addons
-    </div>
+    </div> -->
 
     <!-- Nav Item - Pages Collapse Menu -->
-    <li class="nav-item">
+    <!-- <li class="nav-item">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages" aria-expanded="true"
             aria-controls="collapsePages">
             <i class="fas fa-fw fa-folder"></i>
@@ -88,44 +88,58 @@
                 <a class="collapse-item" href="../../blank.php">Blank Page</a>
             </div>
         </div>
-    </li>
+    </li> -->
 
-    <!-- Nav Item - Charts -->
-    <li class="nav-item">
-        <a class="nav-link" href="pages/charts.php">
-            <i class="fas fa-fw fa-chart-area"></i>
-            <span>Charts</span></a>
-    </li>
+    <!-- Divider -->
+    <hr class="sidebar-divider">
 
-    <!-- Nav Item - Tables -->
+    <!-- Heading -->
+    <div class="sidebar-heading">
+        Cadastro
+    </div>
+
+    <!-- Nav Item - Eventos -->
     <li class="nav-item">
-        <a class="nav-link" href="pages/tables.php">
-            <i class="fas fa-fw fa-table"></i>
-            <span>Tables</span></a>
+        <a class="nav-link" href="../../eventos.php">
+            <i class="fas fa-check-circle"></i>
+            <span>Disponibilidade</span></a>
     </li>
 
     <!-- Nav Item - Eventos -->
     <li class="nav-item">
         <a class="nav-link" href="../../eventos.php">
-            <i class="fas fa-fw fa-table"></i>
-            <span>Eventos</span></a>
+            <i class="fas fa-calendar-plus"></i>
+            <span>Plantão Extraordinário</span></a>
     </li>
 
     <!-- Divider -->
-    <hr class="sidebar-divider d-none d-md-block">
+    <hr class="sidebar-divider">
+
+    <!-- Heading -->
+    <div class="sidebar-heading">
+        Comprovantes
+    </div>
+
+    <!-- Nav Item - Eventos -->
+    <li class="nav-item">
+        <a class="nav-link" href="../../eventos.php">
+            <i class="fas fa-calendar-alt"></i>
+            <span>Agendamentos</span></a>
+    </li>
+
+    <!-- Nav Item - Eventos -->
+    <li class="nav-item">
+        <a class="nav-link" href="../../eventos.php">
+            <i class="fas fa-file-signature"></i>
+            <span>Disponibilidade</span></a>
+    </li>
+
+    <!-- Divider -->
+    <hr class="sidebar-divider">
 
     <!-- Sidebar Toggler (Sidebar) -->
     <div class="text-center d-none d-md-inline">
         <button class="rounded-circle border-0" id="sidebarToggle"></button>
     </div>
-
-    <!-- Sidebar Message -->
-    <div class="sidebar-card d-none d-lg-flex">
-        <img class="sidebar-card-illustration mb-2" src="statics/img/undraw_rocket.svg" alt="...">
-        <p class="text-center mb-2"><strong>SB Admin Pro</strong> is packed with premium features, components, and more!
-        </p>
-        <a class="btn btn-success btn-sm" href="https://startbootstrap.com/theme/sb-admin-pro">Upgrade to Pro!</a>
-    </div>
-
 </ul>
 <!-- End of Sidebar -->

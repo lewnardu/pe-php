@@ -10,6 +10,7 @@ document.addEventListener('DOMContentLoaded', function() {
             center: 'title',
             right: 'dayGridMonth,timeGridWeek,timeGridDay'
         },
+        themeSystem: 'bootstrap4',
         locale: 'pt-br',
         initialDate: formattedDate,
         navLinks: true,
@@ -55,7 +56,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 title: 'All Day Event',
                 start: '2024-08-01T07:00:00',
                 end: '2024-08-01T19:00:00',
-                allDay: true,
+                //allDay: true,
                 backgroundColor: 'rgba(0, 123, 255, 0.3)',  
                 borderColor: 'rgba(0, 123, 255, 0.3)',      
                 textColor: '#000',
@@ -67,7 +68,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 title: 'Long Event',
                 start: '2024-08-02T19:00:00',
                 end: '2024-08-03T07:00:00',
-                allDay: true,
+                //allDay: true,
                 backgroundColor: 'rgba(52, 58, 64, 0.3)',  
                 borderColor: 'rgba(0, 123, 255, 0.3)',      
                 textColor: '#000',
@@ -80,7 +81,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 title: 'Repeating Event',
                 start: '2024-08-05T07:00:00',
                 end: '2024-08-05T19:00:00',
-                allDay: true,
+                //allDay: true,
                 backgroundColor: 'rgba(0, 123, 255, 0.3)',  
                 borderColor: 'rgba(0, 123, 255, 0.3)',      
                 textColor: '#000',
@@ -93,7 +94,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 title: 'Repeating Event',
                 start: '2024-08-06T19:00:00',
                 end: '2024-08-07T07:00:00',
-                allDay: true,
+                //allDay: true,
                 backgroundColor: 'rgba(52, 58, 64, 0.3)',  
                 borderColor: 'rgba(52, 58, 64, 0.3)',      
                 textColor: '#000',
@@ -105,7 +106,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 title: 'Conference',
                 start: '2024-08-08T07:00:00',
                 end: '2024-08-08T19:00:00',
-                allDay: true,
+                //allDay: true,
                 backgroundColor: 'rgba(0, 123, 255, 0.3)',  
                 borderColor: 'rgba(0, 123, 255, 0.3)',      
                 textColor: '#000',
@@ -117,7 +118,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 title: 'Meeting',
                 start: '2024-08-09T07:00:00',
                 end: '2024-08-09T19:00:00',
-                allDay: true,
+                //allDay: true,
                 backgroundColor: 'rgba(0, 123, 255, 0.3)',  
                 borderColor: 'rgba(0, 123, 255, 0.3)',      
                 textColor: '#000',
@@ -129,7 +130,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 title: 'Lunch',
                 start: '2024-08-10T07:00:00',
                 end: '2024-08-10T19:00:00',
-                allDay: true,
+                //allDay: true,
                 backgroundColor: 'rgba(0, 123, 255, 0.3)',  
                 borderColor: 'rgba(0, 123, 255, 0.3)',      
                 textColor: '#000',
@@ -141,7 +142,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 title: 'Meeting',
                 start: '2024-08-11T07:00:00',
                 end: '2024-08-11T19:00:00',
-                allDay: true,
+                //allDay: true,
                 backgroundColor: 'rgba(0, 123, 255, 0.3)',  
                 borderColor: 'rgba(0, 123, 255, 0.3)',      
                 textColor: '#000',
@@ -153,7 +154,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 title: 'Happy Hour',
                 start: '2024-08-12T19:00:00',
                 end: '2024-08-13T07:00:00',
-                allDay: true,
+                //allDay: true,
                 backgroundColor: 'rgba(52, 58, 64, 0.3)',  
                 borderColor: 'rgba(52, 58, 64, 0.3)',      
                 textColor: '#000',
@@ -165,7 +166,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 title: 'Dinner',
                 start: '2024-08-13T19:00:00',
                 end: '2024-08-14T07:00:00',
-                allDay: true,
+                //allDay: true,
                 backgroundColor: 'rgba(52, 58, 64, 0.3)',  
                 borderColor: 'rgba(52, 58, 64, 0.3)',      
                 textColor: '#000',
@@ -177,7 +178,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 title: 'Birthday Party',
                 start: '2024-08-14T07:00:00',
                 end: '2024-08-14T19:00:00',
-                allDay: true,
+                //allDay: true,
                 backgroundColor: 'rgba(0, 123, 255, 0.3)',  
                 borderColor: 'rgba(0, 123, 255, 0.3)',      
                 textColor: '#000',
@@ -190,7 +191,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 url: 'http://google.com/',
                 start: '2024-08-15T07:00:00',
                 end: '2024-08-15T19:00:00',
-                allDay: true,
+                //allDay: true,
                 backgroundColor: 'rgba(0, 123, 255, 0.3)',  
                 borderColor: 'rgba(0, 123, 255, 0.3)',      
                 textColor: '#000',
@@ -198,7 +199,16 @@ document.addEventListener('DOMContentLoaded', function() {
                     icon: 'sun'
                 }
             }
-        ]        
+        ],
+        eventClick: function(arg) {
+            console.log('Evento Data: ', arg.event);
+            const modalLogout = new bootstrap.Modal(document.getElementById('visualizarEventoModal'));
+            document.getElementById('modalTitle').innerText = arg.event.title;
+            document.getElementById('modalStart').innerText = arg.event.start.toLocaleString();
+            document.getElementById('modalEnd').innerText = arg.event.end.toLocaleString();
+            document.getElementById('modalTurno').innerText = arg.event.extendedProps.icon === 'sun' ? 'DIURNO' : 'NOTURNO';
+            modalLogout.show();
+        },        
     });
 
     calendar.render();

@@ -2,10 +2,39 @@
 session_start();
 
 if (!empty($_SESSION['cpf'])) {
+    setlocale(LC_TIME, 'pt_BR.UTF-8');
 	define('FPDF_FONTPATH', 'font/');
 	require('../fpdf/fpdf.php');
 	require_once('../Database.php');
 	$conexao = new Database('DB_NAME_PLE'); 
+
+    function numeroPorExtenso($numero) {
+        $numerosPorExtenso = [
+            0 => 'zero',
+            1 => 'um',
+            2 => 'dois',
+            3 => 'três',
+            4 => 'quatro',
+            5 => 'cinco',
+            6 => 'seis',
+            7 => 'sete',
+            8 => 'oito',
+            9 => 'nove',
+            10 => 'dez',
+            11 => 'onze',
+            12 => 'doze',
+            13 => 'treze',
+            14 => 'quatorze',
+            15 => 'quinze',
+            16 => 'dezesseis',
+            17 => 'dezessete',
+            18 => 'dezoito',
+            19 => 'dezenove',
+            20 => 'vinte'
+        ];
+    
+        return ($numero >= 0 && $numero <= 20) ? $numerosPorExtenso[$numero] : 'X';
+    }
 	
 	$nome = $_SESSION['nome'];
 	$mesDoExtra = isset($_POST['mesDoExtra']) ? $_POST['mesDoExtra'] : false;
@@ -16,6 +45,14 @@ if (!empty($_SESSION['cpf'])) {
         
 		$sql = "SELECT * FROM demanda WHERE nome = :nome and inicio >= :data_inicial and inicio < :data_final order by inicio";
 		$agendamentos = $conexao->query($sql, [':nome' => $nome, ':data_inicial' => $data_inicial, ':data_final' => $data_final]);
+        
+        $totalDeAgendamentos = count($agendamentos);
+        $totalDeAgendamentosPorExtenso = numeroPorExtenso($totalDeAgendamentos);
+        $dataPorExtenso = strftime('%B de %Y', strtotime($mesDoExtra));
+
+        // var_dump($agendamentos);
+        // exit();
+
 		$recuo_paragrafo = "                ";
 		$pdf = new FPDF();
 		$pdf->AddPage();
@@ -23,19 +60,19 @@ if (!empty($_SESSION['cpf'])) {
 		$pdf->SetMargins(20, 0, 20);
 		
         $pdf->ln(40);
-        $pdf->SetFont('TimesNR', '', 12);
-        $paragrafo = "Conforme os registros de agendamentos constantes no Sistema de Plantão Extraordinário – SPEX, previamente lançados dentro do período regulamentar ou excepcional, consta em  nome de Leonardo Araujo, Policial Penal, matrícula nº 1282263, lotado(a) no(a) Setor de Gestão Tecnológica – SGT, a programação de 6 (três) plantões extraordinários para o mês de agosto de 2024.";
+        $pdf->SetFont('Times', '', 12);
+        $paragrafo = "Conforme os registros de agendamentos constantes no Sistema de Plantão Extraordinário - SPEX, previamente lançados dentro do período regulamentar ou excepcional, consta em  nome de {$_SESSION['nome']}, {$_SESSION['cargo']}, matrícula nº {$_SESSION['funcional']}, lotado(a) no(a) {$_SESSION['lotação']}, a programação de {$totalDeAgendamentos} ({$totalDeAgendamentosPorExtenso}) plantões extraordinários sob a competência de $dataPorExtenso.";
         $pdf->MultiCell(170, 7, $recuo_paragrafo . utf8_decode($paragrafo), 0, 'J');
         $paragrafo = "Segue abaixo a relação detalhada dos plantões extraordinários agendados, incluindo as respectivas unidades de preferência, datas e turnos.";
         $pdf->MultiCell(170, 7, $recuo_paragrafo . utf8_decode($paragrafo), 0, 'J');
-        $paragrafo = "Informamos ainda que esses plantões podem ser remanejados conforme  as necessidades operacionais da unidade.";
+        $paragrafo = "Informamos ainda que os plantões agendados e não realizados podem ser remanejados conforme  as necessidades operacionais da unidade.";
         $pdf->MultiCell(170, 7, $recuo_paragrafo . utf8_decode($paragrafo), 0, 'J');
 
 
 		$pdf->ln(); 
         $pdf->SetFillColor(255, 255, 255);
         // $pdf->SetTextColor(0, 0, 0);
-        $pdf->SetFont('TimesNR', 'B', 12);
+        $pdf->SetFont('Times', 'B', 12);
         // $pdf->Cell(-10);
 		$pdf->Cell(82.5, 8, utf8_decode('UNIDADE DE PREFERÊNCIA'), 1, 0, "C", true);
         $pdf->Cell(41.5, 8, utf8_decode('CARGA HORÁRIA'), 1, 0, "C", true);
@@ -50,7 +87,7 @@ if (!empty($_SESSION['cpf'])) {
         }
         
         $pdf->Ln();         
-        $pdf->SetFont('TimesNR', '', 10);
+        $pdf->SetFont('Times', '', 10);
 		foreach ($agendamentos as $agendamento) {
 			list($string_data, $string_hora) = explode(" ", $agendamento['inicio']);
 			$data = new DateTime($string_data);
@@ -65,7 +102,7 @@ if (!empty($_SESSION['cpf'])) {
         }
 
         $pdf->ln();
-        $pdf->SetFont('TimesNR', '', 12);
+        $pdf->SetFont('Times', '', 12);
         $paragrafo = "No mais, colocamo-nos à inteira disposição para prestar qualquer outro esclarecimento, por meio do telefone: 3218-2056, ou, pelo e-mail: copex.seciju@gmail.com.";
         $pdf->MultiCell(170, 7, $recuo_paragrafo . utf8_decode($paragrafo), 0, 'J');
 
@@ -74,14 +111,14 @@ if (!empty($_SESSION['cpf'])) {
         $pdf->MultiCell(170, 7, $recuo_paragrafo . utf8_decode($paragrafo), 0, 'J');
 
         $pdf->ln();
-        $pdf->SetFont('TimesNR', 'B', 12);
+        $pdf->SetFont('Times', 'B', 12);
         $paragrafo = "Carlos Henrique de Souza Castro";
         $pdf->MultiCell(170, 7, utf8_decode($paragrafo), 0, 'C');
-        $pdf->SetFont('TimesNR', '', 12);
-        $paragrafo = "Coordenação de Plantão Extraordinário – COPEX";
-        $pdf->MultiCell(170, 4, $paragrafo, 0, 'C');
+        $pdf->SetFont('Times', '', 12);
+        $paragrafo = "Coordenação de Plantão Extraordinário - COPEX";
+        $pdf->MultiCell(170, 4, utf8_decode($paragrafo), 0, 'C');
 
-        // $pdf->SetFont('TimesNR', '', 10);
+        // $pdf->SetFont('Times', '', 10);
         // $pdf->Cell(100, 10, "Gerado " . date('H:i d-m-Y'), 0, 0, "C");
         // $pdf->Ln(15);
         // $pdf->Cell(190, 20, 'SGT - SISPEN 2020-2024', 0, 0, "C");

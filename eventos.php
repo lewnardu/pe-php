@@ -1,20 +1,25 @@
 <?php
-$pageTitle = 'Eventos';
+session_start();
+if (!empty($_SESSION['cpf'])) {
+    $pageTitle = 'Eventos';
 
-$pageStyles = 'pages/partials/styles.php';
+    $pageStyles = 'pages/partials/styles.php';
 
-$pageStylesCustom = '
-    <link href="statics/css/pages/eventos.css" rel="stylesheet">';
-    
-$pageScripts = 'pages/partials/scripts.php';
+    $pageStylesCustom = '
+        <link href="statics/css/pages/eventos.css" rel="stylesheet">';
+        
+    $pageScripts = 'pages/partials/scripts.php';
 
-$pageScriptsCustom = '
-    <script src="fullcalendar-6.1.15/dist/index.global.min.js"></script>
-    <script src="fullcalendar-6.1.15/packages/core/locales-all.global.min.js"></script>
-    <script src="statics/js/pages/eventos.js"></script>';
+    $pageScriptsCustom = '
+        <script src="fullcalendar-6.1.15/dist/index.global.min.js"></script>
+        <script src="fullcalendar-6.1.15/packages/core/locales-all.global.min.js"></script>
+        <script src="statics/js/pages/eventos.js"></script>';
 
-$pageContentFile = 'pages/contents/eventos.php';
+    $pageContentFile = 'pages/contents/eventos.php';
 
-require_once 'pages/partials/base.php';
-
+    require_once 'pages/partials/base.php';
+} else {
+    $_SESSION['msg'] = "<div class='alert alert-danger'>Usuario não logado!</div>";
+    header("Location: login.php");
+} 
 ?>

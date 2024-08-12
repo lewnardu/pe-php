@@ -24,30 +24,26 @@ if($_SESSION['captcha'] == $acessar){
 				$_SESSION['cpf'] = $usr['cpf'];
 				$_SESSION['inicio'] = time(); 
                 $_SESSION['expira'] = $_SESSION['inicio'] + (30 * 60);
-				if($_SESSION['cpf'] == '027.761.831-27') {
-					header("Location: ../pages/home.php");	
-					exit();
-				}
-				header("Location: ../home.php");
+				header("Location: ../index.php");	
                 exit();
 			}else{
 				$_SESSION['msg'] = "<div class='alert alert-danger'>Acesso negado! Erro nas credenciais de acesso.</div>";
-				header("Location: ../index.php");
+				header("Location: ../login.php");
                 exit();
 			}
 		}else{
             $_SESSION['msg'] = "<div class='alert alert-danger'>Nenhum usuário encontrado com o CPF informado!</div>";
-			header("Location: ../index.php");
+			header("Location: ../login.php");
             exit();
         }
 	}else{
 		$_SESSION['msg'] = "<div class='alert alert-danger'>Informe as credenciais de acesso!</div>";
-		header("Location: ../index.php");
+		header("Location: ../login.php");
         exit();
 	}
 }else{
 	$_SESSION['msg'] = "<div class='alert alert-danger'>O captcha informado é inválido!</div>";
-    header("Location: ../index.php");
+    header("Location: ../login.php");
     exit();
 }
 ?>
