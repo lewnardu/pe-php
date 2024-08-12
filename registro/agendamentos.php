@@ -118,11 +118,9 @@ if (!empty($_SESSION['cpf'])) {
         $paragrafo = "Coordenação de Plantão Extraordinário - COPEX";
         $pdf->MultiCell(170, 4, utf8_decode($paragrafo), 0, 'C');
 
-        // $pdf->SetFont('Times', '', 10);
-        // $pdf->Cell(100, 10, "Gerado " . date('H:i d-m-Y'), 0, 0, "C");
-        // $pdf->Ln(15);
-        // $pdf->Cell(190, 20, 'SGT - SISPEN 2020-2024', 0, 0, "C");
-        // $pdf->Image('../imagens/logoEES.png', 45, 260, 120, 35, 'PNG');
+        $pdf->ln(25);
+        $momentoGeracaoRelatorio = new DateTime();
+        $pdf->Cell(50, 7, "Gerado em: " .  $momentoGeracaoRelatorio->format('d/m/Y H:i:s'), 0, 1, "C");
 
         $pdf->Output('I', $nome . " AGENDAMENTOS - " . $mesDoExtra . ".pdf");
     } else {

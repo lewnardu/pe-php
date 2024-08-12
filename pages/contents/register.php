@@ -17,7 +17,7 @@
                 }
             ?>
 
-            <form class="user" method="POST" action="registro/primeiro.php">
+            <form class="user" method="POST" action="../../registro/primeiro.php">
                 <div class="form-group ">
                     <label for="nome">Nome:</label>
                     <input type="text" class="form-control" placeholder="Digite o nome completo" required autofocus
@@ -78,11 +78,8 @@
                         <input type="text" class="form-control" maxlength="8" ame="captcha"
                             placeholder="Digite o captcha" required>
                     </div>
-                    <!-- <small id="cpfHelp" class="form-text text-muted">Utilize seu cpf para acessar.</small> -->
                 </div>
-                <a href="index.html" class="btn btn-dark btn-block">
-                    Entrar
-                </a>
+                <button class="btn btn-dark btn-block" type="submit">Cadastrar</button>
             </form>
             <hr>
             <div class="text-center">

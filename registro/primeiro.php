@@ -23,7 +23,7 @@ if (in_array('', $dados, true)) {
     $_SESSION['msg'] = "<div class='alert alert-danger'>Todos os campos devem ser preenchidos!</div>";
 } else if ($captcha != $_SESSION['captcha']) {
     $erro = true;
-    $_SESSION['msg'] = "<div class='alert alert-danger'>O captch digitado não confere!</div>";
+    $_SESSION['msg'] = "<div class='alert alert-danger'>O captch digitado não confere AQUI!</div>";
 } else if (strlen($senha) < 8) {
     $erro = true;
     $_SESSION['msg'] = "<div class='alert alert-danger'>A senha deve conter no mínimo 8 caracteres!</div>";

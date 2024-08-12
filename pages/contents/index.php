@@ -240,7 +240,7 @@
                                                     Consultar Disponibilidade</h5>
                                                 <div class="mb-3 text-center">Comprovante de Disponibilidade</div>
                                                 <div>Realize sua consulta a qualquer tempo para extrair seu comprovante
-                                                    de disponibilidade e saiba está apto a realizar jornadas
+                                                    de disponibilidade e saber está apto a realizar jornadas
                                                     extraordinárias.</div>
                                             </div>
                                         </div>
